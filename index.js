@@ -37,7 +37,7 @@ app.get("/api", function(req, res){
 
 
 app.get("/api/:yymmdd", function(req, res) {
-  const date = req.params.yymmdd.includes('-') ? new Date(req.params.yymmdd) : new Date(+req.params.yymmdd);
+  const date = +req.params.yymmdd ? new Date(+req.params.yymmdd) : new Date(req.params.yymmdd);
   const unix = date.getTime();
   if(!unix) {res.json({"error": "Invalid Date"});
   return}
